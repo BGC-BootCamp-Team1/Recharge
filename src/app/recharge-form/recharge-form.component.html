@@ -19,7 +19,9 @@
   <select id="discount" formControlName="discount" (change)="onPromotionChange($event)">
     <option *ngFor="let promotion of promotions" [value]="promotion.id">{{ promotion.description }}</option>
   </select>
-  <span class="discount-tag">Discount - {{ selectedPromotion?.description }}</span>
+  <span class="discount-tag" [ngClass]="selectedPromotion ? 'discount-tag': 'hidden-discount-tag'">
+    Discount - {{ selectedPromotion?.description }}
+  </span>
 
   <label>Recharge Amount (RMB):</label>
   <div class="amount-options">

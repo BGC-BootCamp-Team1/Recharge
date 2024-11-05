@@ -56,7 +56,7 @@ export class RechargeFormComponent implements OnInit {
   calculatePaymentAmount() {
     const amount = this.rechargeForm?.get('amount')?.value;
     if (!this.selectedPromotion)
-      return 0;
+      return amount;
     return this.selectedPromotion.applyPromotion(amount);
   }
 
