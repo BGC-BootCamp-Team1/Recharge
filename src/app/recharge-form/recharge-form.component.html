@@ -1,7 +1,16 @@
-<form class="recharge-form" >
+<form class="recharge-form" (submit)="navigateToComfirmPage($event)">
     <label for="phone">Phone Number:</label>
+    <span id="error-message" style="color: red; display: none;">
+        Phone number must be exactly 10 digits.
+    </span>
     <div class="phone-input">
-        <input type="text" id="phone" placeholder="136xxxxxxxxx" />
+        <!-- <input type="tel" id="phone" placeholder="136xxxxxxxxx" /> -->
+        <input type="tel" name="phone" 
+        placeholder="Enter your phone number(10 digits)" 
+        pattern="\d{3}"
+        maxlength="3" required
+        [(ngModel)]="phoneNumber">
+
         <span class="location">Beijing</span>
     </div>
 
@@ -26,13 +35,8 @@
         <p>Amount Received: <span class="received-amount">100.00 RMB</span></p>
     </div>
 
-    <button type="submit" 
-    class="submit-btn"
-    (click)="navigateToComfirmPage()"
-    routerLink="/submit-btn"
-
-    
-    >Start Recharge</button>
+    <button type="submit" class="submit-btn" (click)="navigateToComfirmPage($event)" routerLink="/submit-btn">Start
+        Recharge</button>
 
     <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
 </form>
