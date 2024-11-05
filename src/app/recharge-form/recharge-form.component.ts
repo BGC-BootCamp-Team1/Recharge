@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 
 export interface Promotion {
+  id: number;
   description: string;
   applyPromotion(amount: number): number;
 }
@@ -19,18 +20,22 @@ export class RechargeFormComponent {
   rechargeForm: FormGroup;  
   promotions: Promotion[] = [
     {
+      id: 1,
       description: 'Mobile Store Recharge 9.95% Discount',
       applyPromotion: (amount: number) => amount * 0.995
     },
     {
+      id: 2,
       description: 'Mobile Store Recharge 8.95% Discount',
       applyPromotion: (amount: number) => amount * 0.985
     },
     {
+      id: 3,
       description: 'Mobile Store Recharge 7.95% Discount',
       applyPromotion: (amount: number) => amount * 0.975
     }
   ];
+
 
   selectedPromotion: Promotion | undefined = undefined;
 
@@ -67,8 +72,8 @@ export class RechargeFormComponent {
     this.rechargeForm.controls['phone'].setValue(input.replace(/[^0-9]/g, ''));
   }
   
-  // onPromotionChange(event: any) {
-  //   const selectedDescription = event.target.value;
-  //   this.selectedPromotion = this.promotions.find(promotion => promotion.description === selectedDescription);
-  // }
+  onPromotionChange(event: any) {
+    const selectedId = parseInt(event.target.value, 10);
+    this.selectedPromotion = this.promotions.find(promotion => promotion.id === selectedId);
+  }
 }
