@@ -8,7 +8,19 @@
 <body>
 <div class="container">
   <app-menu/>
-  <button type="submit" class="submit-btn">Start Recharge</button>
+
+  <mat-card>
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Phone:</strong> {{phone}}</p>
+      <p><strong>Payment Amount:</strong> {{paymentAmount }}</p>
+      <p><strong>Amount Received:</strong> {{amountReceived }}</p>
+    </mat-card-content>
+  </mat-card>
+
+
+  <button type="submit" class="submit-btn">Confirm Recharge</button>
   <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
 </div>
 </body>

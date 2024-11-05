@@ -1,5 +1,5 @@
 <div class="steps">
-  <span class="step active">1. Enter Number and Amount</span>
-  <span class="step">2. Confirm and Pay</span>
-  <span class="step">3. Complete</span>
+  <span class="step" [ngClass]="{'active': activeStep === 1}">1. Enter Number and Amount</span>
+  <span class="step" [ngClass]="{'active': activeStep === 2}">2. Confirm and Pay</span>
+  <span class="step" [ngClass]="{'active': activeStep === 3}">3. Complete</span>
 </div>
