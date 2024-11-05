@@ -1,4 +1,4 @@
-import { Component ,OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PhoneNumberComponent} from "../phone-number/phone-number.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -13,6 +13,8 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './recharge-form.component.css'
 })
 export class RechargeFormComponent implements OnInit{
+  @Output() dataEvent = new EventEmitter<{ phone: string, paymentAmount: number, amountReceived: number }>();
+
   selectedDiscountStr: string = 'Mobile Store Recharge 9.95% Discount';
   amounts: number[] = [30, 50, 100, 300, 500];
   selectedAmount: number | null = 100;
@@ -20,6 +22,7 @@ export class RechargeFormComponent implements OnInit{
   errorMessage: string | null = null;
   paymentAmount : number = 90.05;
   amountReceived : number = 100;
+  phone:string = "";
 
   ngOnInit(): void {
   }
@@ -65,8 +68,11 @@ export class RechargeFormComponent implements OnInit{
       this.amountReceived= amount;
       this.paymentAmount = amount * (1 - discountValue);
     }
+    this.dataEvent.emit({"phone": this.phone, "paymentAmount": this.paymentAmount, "amountReceived": this.amountReceived})
   }
 
 
-
+  receivePhone($event: string) {
+    this.phone = $event;
+  }
 }

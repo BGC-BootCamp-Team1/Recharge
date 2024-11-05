@@ -4,7 +4,7 @@
   margin-bottom: 20px;
 }
 
-.step {
+.step1 {
   font-size: 14px;
   color: #999;
 }
@@ -14,4 +14,9 @@
   background-color: #3498db;
   padding: 5px 10px;
   border-radius: 15px;
+}
+
+.step {
+  font-size: 14px;
+  color: #999;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 
@@ -12,6 +12,8 @@ import {CommonModule} from "@angular/common";
   styleUrl: './phone-number.component.css'
 })
 export class PhoneNumberComponent {
+  @Output() phoneEmitter = new EventEmitter<string>();
+
   phoneNumber: string = '';
   phoneNumberInfo: string | null = null;
 
@@ -19,6 +21,7 @@ export class PhoneNumberComponent {
     const phoneRegex = /^1[3-9]\d{9}$/; // 简单的手机号码正则表达式
     if (phoneRegex.test(this.phoneNumber)) {
       this.phoneNumberInfo = this.getPhoneNumberInfo(this.phoneNumber);
+      this.phoneEmitter.emit(this.phoneNumber);
     } else {
       this.phoneNumberInfo = '请输入有效的手机号码';
     }
