@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit } from '@angular/core';
 import {PhoneNumberComponent} from "../phone-number/phone-number.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -12,14 +12,17 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './recharge-form.component.html',
   styleUrl: './recharge-form.component.css'
 })
-export class RechargeFormComponent {
+export class RechargeFormComponent implements OnInit{
   selectedDiscountStr: string = 'Mobile Store Recharge 9.95% Discount';
   amounts: number[] = [30, 50, 100, 300, 500];
   selectedAmount: number | null = 100;
   customAmount: string = '';
   errorMessage: string | null = null;
-  paymentAmount : number = 100;
+  paymentAmount : number = 90.05;
   amountReceived : number = 100;
+
+  ngOnInit(): void {
+  }
 
   updateDiscountTag(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
