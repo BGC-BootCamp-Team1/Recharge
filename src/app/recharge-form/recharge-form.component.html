@@ -1,0 +1,49 @@
+<form [formGroup]="rechargeForm" (ngSubmit)="onSubmit()" class="recharge-form">
+  <label for="phone">Phone Number:</label>
+  <div class="phone-input">
+    <input
+      type="text"
+      id="phone"
+      formControlName="phone"
+      placeholder="1xx xxxx xxxx"
+      maxlength="11"
+      (input)="onPhoneInput($event)"
+    />
+    <span *ngIf="rechargeForm.get('phone')?.invalid && rechargeForm.get('phone')?.touched" class="error">
+      !!!
+    </span>
+    <span class="location">Beijing</span>
+  </div>
+
+  <label for="discount">Promotion:</label>
+  <select id="discount" formControlName="discount">
+    <option>Mobile Store Recharge 9.95% Discount</option>
+  </select>
+  <span class="discount-tag">Discount - Mobile Store Recharge 9.95% Discount</span>
+
+  <label>Recharge Amount (RMB):</label>
+  <div class="amount-options">
+    <button type="button" class="amount-btn" (click)="setAmount(30)">30</button>
+    <button type="button" class="amount-btn" (click)="setAmount(50)">50</button>
+    <button type="button" class="amount-btn" (click)="setAmount(100)">100</button>
+    <button type="button" class="amount-btn" (click)="setAmount(300)">300</button>
+    <button type="button" class="amount-btn" (click)="setAmount(500)">500</button>
+    <input
+      type="text"
+      size="10"
+      class="amount-input"
+      formControlName="amount"
+      placeholder="10~3000"
+    />
+    <span *ngIf="rechargeForm.get('amount')?.invalid && rechargeForm.get('amount')?.touched" class="error">
+      Amount must be a positive integer between 10 and 3000.
+    </span>
+  </div>
+    <div class="amount-summary">
+      <p>Payment Amount: <span class="payment-amount">{{ calculatePaymentAmount() }} RMB</span></p>
+      <p>Amount Received: <span class="received-amount">{{ rechargeForm.get('amount')?.value }} RMB</span></p>
+    </div>
+  
+    <button type="submit" class="submit-btn">Start Recharge</button>
+    <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
+  </form>
