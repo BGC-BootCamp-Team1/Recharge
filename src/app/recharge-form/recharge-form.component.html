@@ -16,10 +16,10 @@
   </div>
 
   <label for="discount">Promotion:</label>
-  <select id="discount" formControlName="discount">
-    <option>Mobile Store Recharge 9.95% Discount</option>
+  <select id="discount" formControlName="discount" (change)="onPromotionChange($event)">
+    <option *ngFor="let promotion of promotions" [value]="promotion.description">{{ promotion.description }}</option>
   </select>
-  <span class="discount-tag">Discount - Mobile Store Recharge 9.95% Discount</span>
+  <span class="discount-tag">Discount - {{ rechargeForm.get('discount')?.value }}</span>
 
   <label>Recharge Amount (RMB):</label>
   <div class="amount-options">
@@ -35,15 +35,18 @@
       formControlName="amount"
       placeholder="10~3000"
     />
-    <span *ngIf="rechargeForm.get('amount')?.invalid && rechargeForm.get('amount')?.touched" class="error">
+    <span *ngIf="rechargeForm.get('amount').invalid && rechargeForm.get('amount').touched" class="error">
       Amount must be a positive integer between 10 and 3000.
     </span>
   </div>
-    <div class="amount-summary">
-      <p>Payment Amount: <span class="payment-amount">{{ calculatePaymentAmount() }} RMB</span></p>
-      <p>Amount Received: <span class="received-amount">{{ rechargeForm.get('amount')?.value }} RMB</span></p>
-    </div>
-  
-    <button type="submit" class="submit-btn">Start Recharge</button>
-    <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
-  </form>
+
+
+  <div class="amount-summary">
+    <p>Payment Amount: <span class="payment-amount">{{ calculatePaymentAmount() }} RMB</span></p>
+    <p>Amount Received: <span class="received-amount">{{ rechargeForm.get('amount')?.value }} RMB</span></p>
+  </div>
+
+
+  <button type="submit" class="submit-btn">Start Recharge</button>
+  <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
+</form>

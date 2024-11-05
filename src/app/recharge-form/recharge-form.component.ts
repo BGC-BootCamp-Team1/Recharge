@@ -9,8 +9,30 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './recharge-form.component.html',
   styleUrl: './recharge-form.component.css'
 })
+
+export interface Promotion {
+  description: string;
+  applyPromotion(amount: number): number;
+}
+
 export class RechargeFormComponent {
-  rechargeForm: FormGroup;
+  rechargeForm: FormGroup;  
+  promotions: Promotion[] = [
+    {
+      description: 'Mobile Store Recharge 9.95% Discount',
+      applyPromotion: (amount: number) => amount * 0.995
+    },
+    {
+      description: 'Mobile Store Recharge 8.95% Discount',
+      applyPromotion: (amount: number) => amount * 0.985
+    },
+    {
+      description: 'Mobile Store Recharge 7.95% Discount',
+      applyPromotion: (amount: number) => amount * 0.975
+    }
+  ];
+
+  selectedPromotion: Promotion | undefined = undefined;
 
   constructor(private fb: FormBuilder) {
     this.rechargeForm = this.fb.group({
@@ -31,14 +53,22 @@ export class RechargeFormComponent {
     this.rechargeForm.get('amount')?.setValue(amount);
   }
 
-  calculatePaymentAmount(): string {
+  calculatePaymentAmount(): number {
     const amount = this.rechargeForm.get('amount')?.value;
-    const discount = 0.9995; // 9.95% discount
-    return (amount * discount).toFixed(2);
+    if (!this.selectedPromotion)
+    {
+      return 0;
+    }
+    return this.selectedPromotion.applyPromotion(amount);
   }
   
   onPhoneInput(event: any) {
     const input = event.target.value;
     this.rechargeForm.controls['phone'].setValue(input.replace(/[^0-9]/g, ''));
   }
+  
+  // onPromotionChange(event: any) {
+  //   const selectedDescription = event.target.value;
+  //   this.selectedPromotion = this.promotions.find(promotion => promotion.description === selectedDescription);
+  // }
 }
