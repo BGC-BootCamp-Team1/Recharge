@@ -12,3 +12,20 @@ body {
     align-items: center;
     height: 100vh;
 }
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 12px;
+  color: #27ae60;
+  text-align: center;
+  margin-top: 10px;
+}
