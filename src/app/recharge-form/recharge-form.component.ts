@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'recharge-form',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './recharge-form.component.css'
 })
 export class RechargeFormComponent {
+  constructor(private router:Router) { }
 
+  navigateToComfirmPage() {
+    console.log('navigate to comfirm page');
+    this.router.navigate(['/submit-btn']);
+  }
 }

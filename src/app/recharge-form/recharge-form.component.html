@@ -26,5 +26,11 @@
         <p>Amount Received: <span class="received-amount">100.00 RMB</span></p>
     </div>
 
-   
+    <button type="submit" 
+    class="submit-btn"
+    (click)="navigateToComfirmPage()"
+    routerLink="/submit-btn"
+    >Start Recharge</button>
+
+    <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
 </form>
