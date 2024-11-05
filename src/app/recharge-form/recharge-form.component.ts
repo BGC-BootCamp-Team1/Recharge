@@ -62,8 +62,12 @@ export class RechargeFormComponent implements OnInit {
   onSubmit() {
     if (this.rechargeForm?.valid) {
       console.log('Form Submitted', this.rechargeForm.value);
-      this.router.navigate(['/confirm']);
-    } else {
+      this.router.navigate(['/confirm'], {
+        queryParams: {
+          amount: this.selectedAmount,
+          paymentAmount: this.calculatePaymentAmount()
+        }
+      });} else {
       console.log('Form is invalid');
     }
   }
