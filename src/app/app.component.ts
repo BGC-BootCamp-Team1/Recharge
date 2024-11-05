@@ -25,6 +25,9 @@ export class AppComponent {
         if (navigation?.extras.state?.['currentStep']) {
           this.currentStep = navigation.extras.state['currentStep'];
         }
+        else{
+          this.currentStep = 1;
+        }
       }
     });
   }
