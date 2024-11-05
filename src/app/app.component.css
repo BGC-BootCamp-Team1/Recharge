@@ -21,24 +21,6 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.steps {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.step {
-    font-size: 14px;
-    color: #999;
-}
-
-.step.active {
-    color: #fff;
-    background-color: #3498db;
-    padding: 5px 10px;
-    border-radius: 15px;
-}
-
 .recharge-form label {
     font-size: 14px;
     color: #333;
