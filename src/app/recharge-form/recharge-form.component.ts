@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 export interface Promotion {
   id: number,
@@ -36,10 +37,10 @@ export class RechargeFormComponent implements OnInit {
   ];
 
   amountOptions: number[] = [30, 50, 100, 300, 500];
-  selectedAmount: number | null = 100;
+  selectedAmount: number | null = null;
   selectedPromotion: Promotion | undefined = undefined;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private router: Router) { 
     this.rechargeForm = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       discount: ['', Validators.required],
@@ -61,6 +62,7 @@ export class RechargeFormComponent implements OnInit {
   onSubmit() {
     if (this.rechargeForm?.valid) {
       console.log('Form Submitted', this.rechargeForm.value);
+      this.router.navigate(['/confirm']);
     } else {
       console.log('Form is invalid');
     }
