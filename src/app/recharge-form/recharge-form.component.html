@@ -9,8 +9,7 @@
       maxlength="11"
       (input)="onPhoneInput($event)"
     />
-    <span *ngIf="rechargeForm?.get('phone')?.invalid && rechargeForm.get('phone')?.touched" class="error">
-      !!!
+    <span *ngIf="rechargeForm.get('phone')?.invalid" class="error"> !!!
     </span>
     <span class="location">Beijing</span>
   </div>
@@ -41,8 +40,8 @@
       placeholder="10~3000"
       (input)="onAmountInput($event)"
     />
-    <span *ngIf="rechargeForm.get('amount')?.invalid && rechargeForm.get('amount')?.touched" class="error">
-      Amount must be a positive integer between 10 and 3000.
+    <span *ngIf="rechargeForm.get('amount')?.invalid" class="error">
+      !!!
     </span>
   </div>
 
