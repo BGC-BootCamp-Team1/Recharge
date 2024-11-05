@@ -25,19 +25,23 @@
 
   <label>Recharge Amount (RMB):</label>
   <div class="amount-options">
-    <button type="button" class="amount-btn" (click)="setAmount(30)">30</button>
-    <button type="button" class="amount-btn" (click)="setAmount(50)">50</button>
-    <button type="button" class="amount-btn" (click)="setAmount(100)">100</button>
-    <button type="button" class="amount-btn" (click)="setAmount(300)">300</button>
-    <button type="button" class="amount-btn" (click)="setAmount(500)">500</button>
+    <button 
+      type="button" 
+      class="amount-btn" 
+      *ngFor="let amount of amountOptions" 
+      [class.active]="selectedAmount === amount"
+      (click)="setAmount(amount)">
+      {{ amount }}
+    </button>
     <input
       type="text"
       size="10"
       class="amount-input"
       formControlName="amount"
       placeholder="10~3000"
+      (input)="onAmountInput($event)"
     />
-    <span *ngIf="rechargeForm?.get('amount')?.invalid && rechargeForm?.get('amount')?.touched" class="error">
+    <span *ngIf="rechargeForm.get('amount')?.invalid && rechargeForm.get('amount')?.touched" class="error">
       Amount must be a positive integer between 10 and 3000.
     </span>
   </div>

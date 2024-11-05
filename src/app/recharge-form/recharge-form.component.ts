@@ -35,6 +35,8 @@ export class RechargeFormComponent implements OnInit {
     }
   ];
 
+  amountOptions: number[] = [30, 50, 100, 300, 500];
+  selectedAmount: number | null = 100;
   selectedPromotion: Promotion | undefined = undefined;
 
   constructor(private fb: FormBuilder) { 
@@ -47,10 +49,6 @@ export class RechargeFormComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  setAmount(amount: number) {
-    this.rechargeForm?.patchValue({ amount });
   }
 
   calculatePaymentAmount() {
@@ -68,7 +66,6 @@ export class RechargeFormComponent implements OnInit {
     }
   }
 
-  // 只允许输入数字
   onPhoneInput(event: any) {
     const input = event.target.value;
     this.rechargeForm?.controls['phone'].setValue(input.replace(/[^0-9]/g, ''));
@@ -77,5 +74,16 @@ export class RechargeFormComponent implements OnInit {
   onPromotionChange(event: any) {
     const selectedId = parseInt(event.target.value, 10);
     this.selectedPromotion = this.promotions.find(promotion => promotion.id === selectedId);
+  }
+  
+  setAmount(amount: number) {
+    this.rechargeForm.patchValue({ amount });
+    this.selectedAmount = amount;
+  }
+
+  onAmountInput(event: any) {
+    const input = event.target.value;
+    this.rechargeForm.controls['amount'].setValue(input.replace(/[^0-9]/g, ''));
+    this.selectedAmount = null;
   }
 }
