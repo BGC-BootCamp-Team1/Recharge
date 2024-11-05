@@ -2,11 +2,11 @@
   <app-phone-number/>
   <label for="discount">Promotion:</label>
   <select id="discount" (change)="updateDiscountTag($event)">
-    <option value="0.0995">Mobile Store Recharge 9.95% Discount</option>
-    <option value="0.05">Mobile Store Recharge 5.00% Discount</option>
-    <option value="0.0099">Mobile Store Recharge 0.99% Discount</option>
+    <option value=0.0995>Mobile Store Recharge 9.95% Discount</option>
+    <option value=0.05>Mobile Store Recharge 5.00% Discount</option>
+    <option value=0.01>Mobile Store Recharge 0.99% Discount</option>
   </select>
-  <span class="discount-tag">Discount - {{ selectedDiscount }}</span>
+  <span class="discount-tag">Discount - {{ selectedDiscountStr }}</span>
 
   <label>Recharge Amount(RMB):</label>
 

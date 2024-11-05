@@ -13,23 +13,29 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './recharge-form.component.css'
 })
 export class RechargeFormComponent {
-  selectedDiscount: string = 'Mobile Store Recharge 9.95% Discount';
+  selectedDiscountStr: string = 'Mobile Store Recharge 9.95% Discount';
   amounts: number[] = [30, 50, 100, 300, 500];
   selectedAmount: number | null = 100;
   customAmount: string = '';
   errorMessage: string | null = null;
-  paymentAmount : number = 0;
-  amountReceived : number = 0;
+  paymentAmount : number = 100;
+  amountReceived : number = 100;
 
   updateDiscountTag(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.selectedDiscount = selectElement.options[selectElement.selectedIndex].text;
+    this.selectedDiscountStr = "Mobile Store Recharge " +
+      parseFloat(parseFloat(selectElement.options[selectElement.selectedIndex].value).toFixed(3))*100+
+      " % Discount";
+    this.calculateReceivedAmount(parseFloat(selectElement.value));
+
   }
 
   selectAmount(amount: number) {
     this.selectedAmount = amount;
     this.customAmount = '';
     this.errorMessage = null;
+    const discountValue = parseFloat((document.getElementById('discount') as HTMLSelectElement).value);
+    this.calculateReceivedAmount(discountValue);
 
   }
 
@@ -45,8 +51,19 @@ export class RechargeFormComponent {
       this.errorMessage = '请输入10到3000之间的整数';
     } else {
       this.errorMessage = null;
+      const discountValue = parseFloat((document.getElementById('discount') as HTMLSelectElement).value);
+      this.calculateReceivedAmount(discountValue);
+
     }
   }
+  calculateReceivedAmount(discountValue: number) {
+    const amount = this.selectedAmount || parseInt(this.customAmount, 10);
+    if (!isNaN(amount)) {
+      this.amountReceived= amount;
+      this.paymentAmount = amount * (1 - discountValue);
+    }
+  }
+
 
 
 }
