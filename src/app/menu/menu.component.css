@@ -1,0 +1,13 @@
+
+
+.step {
+    font-size: 14px;
+    color: #999;
+}
+
+.step.active {
+    color: #fff;
+    background-color: #3498db;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
