@@ -43,7 +43,7 @@ export class RechargeFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router) { 
     this.rechargeForm = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern(/^1\d{10}$/)]],
-      discount: ['', Validators.required],
+      discount: [''],
       amount: ['', [Validators.required, Validators.min(10), Validators.max(3000)]]
     });
 
