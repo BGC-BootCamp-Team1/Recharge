@@ -21,18 +21,18 @@ export class RechargeFormComponent implements OnInit {
   promotions: Promotion[] = [
     {
       id: 1,
-      description: 'Mobile Store Recharge 9.95% Discount',
-      applyPromotion: (amount: number) => amount * 0.995
+      description: 'Mobile Store Recharge 10% Discount',
+      applyPromotion: (amount: number) => amount * 0.9
     },
     {
       id: 2,
-      description: 'Mobile Store Recharge 8.95% Discount',
-      applyPromotion: (amount: number) => amount * 0.985
+      description: 'Save 30 for each 200',
+      applyPromotion: (amount: number) => amount - Math.floor(amount/200) * 30
     },
     {
       id: 3,
-      description: 'Mobile Store Recharge 7.95% Discount',
-      applyPromotion: (amount: number) => amount * 0.975
+      description: 'Save 50 for each 300',
+      applyPromotion: (amount: number) => amount - Math.floor(amount/300) * 50
     }
   ];
 
