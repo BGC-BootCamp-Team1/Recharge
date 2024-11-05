@@ -1,0 +1,17 @@
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone-input input {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.location {
+  color: #3498db;
+  font-size: 14px;
+}

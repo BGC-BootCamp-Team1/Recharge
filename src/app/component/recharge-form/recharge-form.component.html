@@ -1,15 +1,12 @@
 <form class="recharge-form">
-  <label for="phone">Phone Number:</label>
-  <div class="phone-input">
-    <input type="text" id="phone" placeholder="136xxxxxxxxx" />
-    <span class="location">Beijing</span>
-  </div>
-
+  <app-phone-number/>
   <label for="discount">Promotion:</label>
-  <select id="discount">
-    <option>Mobile Store Recharge 9.95% Discount</option>
+  <select id="discount" (change)="updateDiscountTag($event)">
+    <option value="0.0995">Mobile Store Recharge 9.95% Discount</option>
+    <option value="0.05">Mobile Store Recharge 5.00% Discount</option>
+    <option value="0.0099">Mobile Store Recharge 0.99% Discount</option>
   </select>
-  <span class="discount-tag">Discount - Mobile Store Recharge 9.95% Discount</span>
+  <span class="discount-tag">Discount - {{ selectedDiscount }}</span>
 
   <label>Recharge Amount(RMB):</label>
   <div class="amount-options">
