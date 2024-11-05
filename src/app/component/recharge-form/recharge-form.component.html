@@ -9,18 +9,29 @@
   <span class="discount-tag">Discount - {{ selectedDiscount }}</span>
 
   <label>Recharge Amount(RMB):</label>
+
   <div class="amount-options">
-    <button type="button" class="amount-btn">30</button>
-    <button type="button" class="amount-btn">50</button>
-    <button type="button" class="amount-btn active">100</button>
-    <button type="button" class="amount-btn">300</button>
-    <button type="button" class="amount-btn">500</button>
-    <input type="text" size="10" class="amount-input" placeholder="10~3000" />
+    <button type="button" class="amount-btn"
+            *ngFor="let amount of amounts"
+            [class.active]="amount === selectedAmount"
+            (click)="selectAmount(amount)">
+      {{ amount }}
+    </button>
+    <input type="text" size="10" class="amount-input" placeholder="10~3000"
+           [(ngModel)]="customAmount"
+           (focus)="removeActiveClass()"
+           (input)="validateCustomAmount()"
+           name="customAmount"
+    />
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
   </div>
 
+
+
   <div class="amount-summary">
-    <p>Payment Amount: <span class="payment-amount">99.50 RMB</span></p>
-    <p>Amount Received: <span class="received-amount">100.00 RMB</span></p>
+    <p>Payment Amount: <span class="payment-amount">{{paymentAmount}} RMB</span></p>
+    <p>Amount Received: <span class="received-amount">{{amountReceived}} RMB</span></p>
   </div>
 
 </form>
