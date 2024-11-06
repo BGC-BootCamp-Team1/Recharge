@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="steps">
+          <span class="step" [class.active]="isStepActive(1)">1. Enter Number and Amount</span>
+          <span class="step" [class.active]="isStepActive(2)">2. Confirm and Pay</span>
+          <span class="step" [class.active]="isStepActive(3)">3. Complete</span>
+        </div>
+      
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+</body>
+</html>
