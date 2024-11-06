@@ -64,7 +64,7 @@ export class RechargeFormComponent implements OnInit {
       console.log('Form Submitted', this.rechargeForm.value);
       this.router.navigate(['/confirm'], {
         queryParams: {
-          amount: this.selectedAmount,
+          amount: this.rechargeForm?.get('amount')?.value,
           paymentAmount: this.calculatePaymentAmount()
         }
       });} else {
@@ -90,6 +90,6 @@ export class RechargeFormComponent implements OnInit {
   onAmountInput(event: any) {
     const input = event.target.value;
     this.rechargeForm.controls['amount'].setValue(input.replace(/[^0-9]/g, ''));
-    this.selectedAmount = null;
+    // this.selectedAmount = null;
   }
 }
