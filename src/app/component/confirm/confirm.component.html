@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recharge Page</title>
+</head>
+<body>
+<div class="container">
+  <app-menu/>
+
+  <mat-card>
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Phone:</strong> {{phone}}</p>
+      <p><strong>Payment Amount:</strong> {{paymentAmount }}</p>
+      <p><strong>Amount Received:</strong> {{amountReceived }}</p>
+    </mat-card-content>
+  </mat-card>
+
+
+  <button type="submit" class="submit-btn">Confirm Recharge</button>
+  <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,5 @@
+<label for="phone">Phone Number:</label>
+<div class="phone-input">
+  <input id="phone" [(ngModel)]="phoneNumber" (change)="checkPhoneNumber()" placeholder="请输入手机号码">
+  <p class="location" *ngIf="phoneNumberInfo" >{{ phoneNumberInfo }}</p>
+</div>
