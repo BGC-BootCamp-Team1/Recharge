@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubmitBtnComponent } from './submit-btn.component';
+import { ConfirmpageComponent } from './confirmpage.component';
 
-describe('SubmitBtnComponent', () => {
-  let component: SubmitBtnComponent;
-  let fixture: ComponentFixture<SubmitBtnComponent>;
+describe('ConfirmpageComponent', () => {
+  let component: ConfirmpageComponent;
+  let fixture: ComponentFixture<ConfirmpageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SubmitBtnComponent]
+      imports: [ConfirmpageComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(SubmitBtnComponent);
+    
+    fixture = TestBed.createComponent(ConfirmpageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
