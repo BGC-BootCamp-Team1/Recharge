@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { RechargeFormComponent } from './recharge-form/recharge-form.component';
 import { MenuComponent } from './menu/menu.component';
@@ -15,8 +15,8 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'Recharge';
-  currentStep:number = 1;
- 
+  @Input() currentStep:number = 1;
+  
 
   constructor(private router: Router) { }
 

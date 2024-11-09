@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PhoneNumberLocationService } from '../phone-number-location.service';
+import { PhoneNumberLocationService } from '../location-service/phone-number-location.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
