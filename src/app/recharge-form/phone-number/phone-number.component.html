@@ -1,0 +1,15 @@
+<label for="phone">Phone Number:</label>
+    
+    <div class="phone-input">
+        <!-- <input type="tel" id="phone" placeholder="136xxxxxxxxx" /> -->
+        <input type="tel" name="phone" 
+        placeholder="Enter your phone number(11 digits)" 
+        pattern="\d{11}"
+        maxlength="11" required
+        [(ngModel)]="phoneNumber"
+        (input)="onInput()"
+        [ngClass]="{'invalid':!isPhoneNumberValid&& phoneNumber.length === 11}">
+        <span class="error" *ngIf="!isPhoneNumberValid&& phoneNumber.length === 11" >!!!</span>
+        <span class="location">{{location}}</span>
+    </div>
+

@@ -1,0 +1,34 @@
+.label {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+.phone-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.phone-input input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;; /**/
+    border-radius: 4px;
+}
+
+
+.phone-input input.invalid {
+    border:1px solid red;
+}
+
+
+  .valid {
+    border: 1px solid black; /* 输入框有效时边框变绿 */
+}
+
+.location {
+    color: #3498db;
+    font-size: 14px;
+}
