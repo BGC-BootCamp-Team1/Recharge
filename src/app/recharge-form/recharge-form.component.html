@@ -1,0 +1,92 @@
+<form class="recharge-form">
+    <br>
+    <app-phone-number></app-phone-number>
+
+
+
+
+    <label for="discount">Promotion:</label>
+    <select id="discount"  [(ngModel)]="selectedDiscount" (change) = "updateDiscount()">
+        <option *ngFor="let option of discountOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    <span class="discount-tag">{{discountTag}}</span>
+
+    <!--  -->
+
+
+    <label>Recharge Amount(RMB):</label>
+    <div class="amount-options">
+        <button 
+    type="button" 
+    class="amount-btn" 
+    [class.active]="selectedAmount === 30" 
+    (click)="selectAmount(30)" 
+
+    >
+    30
+  </button>
+  <button 
+    type="button" 
+    class="amount-btn" 
+    [class.active]="selectedAmount === 50" 
+    (click)="selectAmount(50)" 
+    
+    >
+    50
+  </button>
+  <button 
+    type="button" 
+    class="amount-btn" 
+    [class.active]="selectedAmount === 100" 
+    (click)="selectAmount(100)" 
+
+    >
+    100
+  </button>
+  <button 
+    type="button" 
+    class="amount-btn" 
+    [class.active]="selectedAmount === 300" 
+    (click)="selectAmount(300)" 
+    
+    >
+    300
+  </button>
+  <button 
+    type="button" 
+    class="amount-btn" 
+    [class.active]="selectedAmount === 500" 
+    (click)="selectAmount(500)" 
+   
+    >
+    500
+  </button>
+  <input 
+    type="text" 
+    size="10" 
+    class="amount-input" 
+    placeholder="10~3000" 
+    [(ngModel)]="typedAmount" 
+    (input)="onTypedAmountChange()" 
+    [class.active]="isTypedAmountValid" 
+    [ngClass]="{'invalid': typedAmount < 10 || typedAmount > 3000}" 
+     />
+    </div>
+
+
+
+
+
+
+    <div class="amount-summary">
+        <p>Payment Amount: <span class="payment-amount"  [(ngModel)]="paymentAmount" >{{paymentAmount}}RMB</span></p>
+        <p>Amount Received: <span class="received-amount" [(ngModel)]="amountReceived">{{amountReceived}}RMB</span></p>
+    </div>
+
+    <button type="submit" class="submit-btn" (click)="navigateToComfirmPage($event)" routerLink="/submit-btn">Start
+        Recharge</button>
+
+    <p class="note">Please carefully check the recharge number, as it cannot be refunded</p>
+</form>
